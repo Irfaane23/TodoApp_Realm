@@ -8,28 +8,23 @@
 
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class TodoListViewController: UITableViewController {
     
+   // let realm = try! Realm()
     var itemArray : [Item] = [Item]()
     
     var selectedCategory : Category? {
         didSet {
-            loadDataItems()
+       //     loadDataItems()
         }
     }
-    
-    // let defaults = UserDefaults.standard
-    
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadDataItems()
+       // loadDataItems()
     }
     
     //TableView Datasource Methods
@@ -45,14 +40,6 @@ class TodoListViewController: UITableViewController {
         cell.textLabel?.text = item.title
         
         cell.accessoryType = item.done ? .checkmark : .none
-        
-        /*      if item.done == true {
-         cell.accessoryType = .checkmark
-         }
-         else {
-         cell.accessoryType = .none
-         }
-         */
         return cell
     }
     
@@ -60,15 +47,6 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        
-        //CRUD Version : Deleting data from the permanent storage of the phone
-        // context.delete(itemArray[indexPath.row]) //-> Remove data from the permanent store
-        // itemArray.remove(at: indexPath.row) //-> Remove data from the itemArray
-        
-        saveDataItem()
-        
-        //selected a cell -> cell is gray
-        // with that after selecting the cell, it turns back to white
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
@@ -85,15 +63,15 @@ class TodoListViewController: UITableViewController {
             //what will happen once the user have pressed the button
             // -> we add at the end of the itemArray the new item we create
             
-            let newItem = Item(context: self.context)
+            let newItem = Item()
             newItem.title = textField.text!
             newItem.done = false // we have to specify this field because in the DataModel, we set the done attributes as not an optionnal
-            newItem.parentCategory = self.selectedCategory
+            //newItem.parentCategory = self.selectedCategory
             
             self.itemArray.append(newItem)
             
             
-            self.saveDataItem()
+            //self.save(dataItem: newItem)
         }
         
         alert.addTextField { (alertTextField) in
@@ -110,17 +88,19 @@ class TodoListViewController: UITableViewController {
     
     //Model manipulation data
     
-    private func saveDataItem() {
+/*    private func save(dataItem : Item) {
         //CRUD Version : Here we Create Data
         do {
-            try context.save()
+            try realm.write {
+                realm.add(dataItem)
+            }
         } catch {
             print(error)
         }
         tableView.reloadData()
     }
     
-    func loadDataItems(with request : NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil) {
+/*    func loadDataItems(with request : NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil) {
         //CRUD Version : Here we Read Data from the database
         
         let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
@@ -140,7 +120,7 @@ class TodoListViewController: UITableViewController {
         }
         tableView.reloadData()
     }
-    
+    */
     // Edit a row cell of the tableView in order to delete an item in the itemArray
     /*   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
      return true
@@ -155,7 +135,7 @@ class TodoListViewController: UITableViewController {
      */
     
 }
-
+/*
 // MARK: - Search Bar methods
 extension TodoListViewController : UISearchBarDelegate {
     
@@ -186,8 +166,11 @@ extension TodoListViewController : UISearchBarDelegate {
             }
         }
     }
-    
+ 
 }
 
+*/
 
+ */
 
+ }

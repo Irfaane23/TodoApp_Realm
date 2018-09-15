@@ -7,18 +7,17 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class CategoryTableViewController: UITableViewController {
     
+    let realm = try! Realm()
     var categories : [Category] = [Category]() 
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadCategory()
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -28,12 +27,12 @@ class CategoryTableViewController: UITableViewController {
         
         let alertAction = UIAlertAction(title: "Add", style: .default) { (action) in
             
-            let newCategory = Category(context: self.context)
+            let newCategory = Category()
             newCategory.name = textField.text!
             
             self.categories.append(newCategory)
             
-            self.saveCategory()
+            self.save(category: newCategory)
             
         }
         
@@ -73,23 +72,18 @@ class CategoryTableViewController: UITableViewController {
     }
     
     //MARK: - Data Manipulation Methods
-    func saveCategory() {
+    func save(category : Category) {
         do {
-            try context.save()
+            // Write into our Realm Database a new category
+            try realm.write {
+                realm.add(category)
+            }
         } catch {
             print("Error saving context : \(error)")
         }
         tableView.reloadData()
     }
     
-    func loadCategory(with request : NSFetchRequest<Category> = Category.fetchRequest()) {
-        do {
-            categories = try context.fetch(request)
-        } catch {
-            print("Error loading categoeies : \(error)")
-        }
-        tableView.reloadData()
-    }
     
     
 }
