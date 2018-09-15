@@ -11,29 +11,29 @@ import RealmSwift
 
 class CategoryTableViewController: UITableViewController {
     
+    //Init the realm database
     let realm = try! Realm()
-    var categories : [Category] = [Category]() 
-    
+    // container for realm object queries : Collection of results that our category objects
+    var categories : Results<Category>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadCategory()
         
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
-        
         let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
         
         let alertAction = UIAlertAction(title: "Add", style: .default) { (action) in
-            
             let newCategory = Category()
             newCategory.name = textField.text!
             
-            self.categories.append(newCategory)
+            //self.categories.append(newCategory) //-> we don't need this line anymore because the Results<Category> object is auto-updating the change 
             
             self.save(category: newCategory)
-            
+    
         }
         
         alert.addTextField { (alertTextField) in
@@ -48,27 +48,30 @@ class CategoryTableViewController: UITableViewController {
     
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        return categories?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
-        cell.textLabel?.text = categories[indexPath.row].name
+        cell.textLabel?.text = categories?[indexPath.row].name ?? "No category added yet"
         
         return cell
     }
     
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // go the TodoListViewController but before that call the prepareForSegue method
         performSegue(withIdentifier: "goToItems", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //this method is usefull to catch a reference in the selectedCategory
+        //attribute of the TodoListViewController class
         let destinationVC = segue.destination as! TodoListViewController
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedCategory = categories[indexPath.row]
+            destinationVC.selectedCategory = categories?[indexPath.row]
         }
-        
+
     }
     
     //MARK: - Data Manipulation Methods
@@ -78,10 +81,17 @@ class CategoryTableViewController: UITableViewController {
             try realm.write {
                 realm.add(category)
             }
-        } catch {
+        } catch let error as NSError {
             print("Error saving context : \(error)")
         }
         tableView.reloadData()
+    }
+    
+    func loadCategory() {
+        //we set the categories collection to look inside our DB
+        //and fetch all of the objects that belongs to our data type
+        categories = realm.objects(Category.self)
+        tableView.reloadData() // calls all of the TableView Datasource Methods
     }
     
     
