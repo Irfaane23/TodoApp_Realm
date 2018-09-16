@@ -15,16 +15,13 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = rowHeight
-
+        
+        tableView.separatorStyle = .none
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwipeTableViewCell
-        cell.delegate = self
-        return cell
-    }
+    
+    //-----------------------------------------------------------------------------------------------------------
     //MARK: - Swipe TableView Delegate Methods
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
@@ -40,6 +37,12 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         // customize the action appearance
         deleteAction.image = UIImage(named: "delete-icon")
         return [deleteAction]
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwipeTableViewCell
+        cell.delegate = self
+        return cell
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {

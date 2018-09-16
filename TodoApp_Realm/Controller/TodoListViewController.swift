@@ -26,6 +26,7 @@ class TodoListViewController: SwipeTableViewController {
         loadDataItems()
     }
     
+    //-----------------------------------------------------------------------------------------------------------
     //MARK: - TableView Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,8 +48,8 @@ class TodoListViewController: SwipeTableViewController {
         return cell
     }
     
+    //-----------------------------------------------------------------------------------------------------------
     //MARK: - TableView Delegate Methods
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //CRUD : Update Data from the Realm Database
         
@@ -68,6 +69,7 @@ class TodoListViewController: SwipeTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    //-----------------------------------------------------------------------------------------------------------
     //MARK: - Add new item in the TableView
     @IBAction func addPressedButton(_ sender: UIBarButtonItem) {
         
@@ -107,7 +109,7 @@ class TodoListViewController: SwipeTableViewController {
         present(alert,animated: true, completion: nil)
     }
     
-    
+    //-----------------------------------------------------------------------------------------------------------
     //MARK: - Model manipulation data
     
     func loadDataItems() {
@@ -131,6 +133,7 @@ class TodoListViewController: SwipeTableViewController {
     
 }
 
+//-----------------------------------------------------------------------------------------------------------
 // MARK: - Search Bar methods
 extension TodoListViewController : UISearchBarDelegate {
     
