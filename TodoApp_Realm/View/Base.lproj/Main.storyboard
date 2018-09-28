@@ -79,7 +79,7 @@
                             <outlet property="delegate" destination="Giv-Ef-YF6" id="n9n-pI-e2G"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Items" id="dz3-18-faH">
+                    <navigationItem key="navigationItem" title="Items" leftItemsSupplementBackButton="YES" id="dz3-18-faH">
                         <barButtonItem key="backBarButtonItem" title="Categories" id="Cb4-ZQ-JpO"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FeN-tH-XXj">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -116,4 +116,5 @@
             <point key="canvasLocation" x="260" y="134"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

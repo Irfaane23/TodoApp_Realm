@@ -11,7 +11,6 @@
 		2592A568214D2E8D003384CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592A567214D2E8D003384CC /* AppDelegate.swift */; };
 		2592A56A214D2E8D003384CC /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592A569214D2E8D003384CC /* TodoListViewController.swift */; };
 		2592A56D214D2E8D003384CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2592A56B214D2E8D003384CC /* Main.storyboard */; };
-		2592A570214D2E8D003384CC /* TodoApp_Realm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2592A56E214D2E8D003384CC /* TodoApp_Realm.xcdatamodeld */; };
 		2592A572214D2E92003384CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2592A571214D2E92003384CC /* Assets.xcassets */; };
 		2592A575214D2E92003384CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2592A573214D2E92003384CC /* LaunchScreen.storyboard */; };
 		2592A580214D2F72003384CC /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592A57F214D2F72003384CC /* CategoryViewController.swift */; };
@@ -26,7 +25,6 @@
 		2592A567214D2E8D003384CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2592A569214D2E8D003384CC /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		2592A56C214D2E8D003384CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2592A56F214D2E8D003384CC /* TodoApp_Realm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoApp_Realm.xcdatamodel; sourceTree = "<group>"; };
 		2592A571214D2E92003384CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2592A574214D2E92003384CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2592A576214D2E92003384CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 				2592A571214D2E92003384CC /* Assets.xcassets */,
 				2592A573214D2E92003384CC /* LaunchScreen.storyboard */,
 				2592A576214D2E92003384CC /* Info.plist */,
-				2592A56E214D2E8D003384CC /* TodoApp_Realm.xcdatamodeld */,
 			);
 			path = TodoApp_Realm;
 			sourceTree = "<group>";
@@ -161,6 +158,7 @@
 				TargetAttributes = {
 					2592A563214D2E8D003384CC = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -246,7 +244,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2592A580214D2F72003384CC /* CategoryViewController.swift in Sources */,
-				2592A570214D2E8D003384CC /* TodoApp_Realm.xcdatamodeld in Sources */,
 				2592A56A214D2E8D003384CC /* TodoListViewController.swift in Sources */,
 				255056D6214E71470036900A /* SwipeTableViewController.swift in Sources */,
 				25A928FB214D3CC600843EED /* Item.swift in Sources */,
@@ -405,7 +402,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.irfaaneousseny.TodoApp-Realm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -424,7 +421,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.irfaaneousseny.TodoApp-Realm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -451,19 +448,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		2592A56E214D2E8D003384CC /* TodoApp_Realm.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				2592A56F214D2E8D003384CC /* TodoApp_Realm.xcdatamodel */,
-			);
-			currentVersion = 2592A56F214D2E8D003384CC /* TodoApp_Realm.xcdatamodel */;
-			path = TodoApp_Realm.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 2592A55C214D2E8D003384CC /* Project object */;
 }

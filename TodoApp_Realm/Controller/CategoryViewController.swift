@@ -55,9 +55,8 @@ class CategoryTableViewController: SwipeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No category added yet"
-        cell.backgroundColor = UIColor(hexString: categories?[indexPath.row].color ?? "1D9BF6")
-
-       
+        cell.backgroundColor = UIColor(hexString: categories?[indexPath.row].color ?? "FFFFFF")
+            
         return cell
     }
     
@@ -69,6 +68,10 @@ class CategoryTableViewController: SwipeTableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        navigationItem.backBarButtonItem = backButton
+        
         //this method is usefull to catch a reference in the selectedCategory
         //attribute of the TodoListViewController class
         let destinationVC = segue.destination as! TodoListViewController

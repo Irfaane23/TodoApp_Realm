@@ -9,6 +9,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class TodoListViewController: SwipeTableViewController {
     
@@ -39,6 +40,12 @@ class TodoListViewController: SwipeTableViewController {
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
             cell.accessoryType = (todoItems?[indexPath.row].done)! ? .checkmark : .none
+            
+            if let colour = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count)) {
+                cell.backgroundColor = colour
+                cell.textLabel?.textColor = ContrastColorOf(colour, returnFlat: true)
+            }
+            
         }
         else {
             cell.textLabel?.text = "No Item added yet"
@@ -56,7 +63,7 @@ class TodoListViewController: SwipeTableViewController {
         if let item = todoItems?[indexPath.row] {
             do {
                 try realm.write {
-                    item.done = !item.done
+                    item.done = !item.done // alternate the checkmark
                     
                     //CRUD : Delete Data from the Realm DB
                     //realm.delete(item)
@@ -115,6 +122,7 @@ class TodoListViewController: SwipeTableViewController {
     func loadDataItems() {
         //CRUD : Read Data from the Realm Database
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
+        
         tableView.reloadData()
     }
     
@@ -129,6 +137,12 @@ class TodoListViewController: SwipeTableViewController {
                 print("Error deleting item : \(error)")
             }
         }
+    }
+    
+    private func loadGradientColor() {
+//        guard selectedCategory?.color == todoItems. else {
+//            fatalError("Could not retrieve the category color")
+//        }
     }
     
 }
