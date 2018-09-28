@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vbX-HC-3zU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vbX-HC-3zU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--TodoAppUsingRealm-->
+        <!--TodoApp-->
         <scene sceneID="JdU-fh-p9J">
             <objects>
                 <tableViewController id="dqt-jF-Fk3" customClass="CategoryTableViewController" customModule="TodoApp_Realm" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,7 +32,7 @@
                             <outlet property="delegate" destination="dqt-jF-Fk3" id="bf7-tT-jwu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TodoAppUsingRealm" id="850-ca-l5g">
+                    <navigationItem key="navigationItem" title="TodoApp" id="850-ca-l5g">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="V1F-2S-uaF">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -82,12 +82,14 @@
                     <navigationItem key="navigationItem" title="Items" leftItemsSupplementBackButton="YES" id="dz3-18-faH">
                         <barButtonItem key="backBarButtonItem" title="Categories" id="Cb4-ZQ-JpO"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FeN-tH-XXj">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="addPressedButton:" destination="Giv-Ef-YF6" id="86T-34-DsA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="gaQ-EY-1Ht" id="Kid-GJ-ZkM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgx-ch-NHu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -98,10 +100,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vbX-HC-3zU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nZo-au-dO7">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="nZo-au-dO7">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.21249700639999999" green="0.73769573440000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.21176470588235294" green="0.73725490196078436" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>

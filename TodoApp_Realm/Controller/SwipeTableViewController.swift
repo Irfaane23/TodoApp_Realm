@@ -54,8 +54,4 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
     func updateModel(at : IndexPath) {
         //update the data model
     }
-    
-    
-    
-
 }
